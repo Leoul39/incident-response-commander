@@ -1,3 +1,4 @@
+from operator import add
 from typing import Annotated, TypedDict
 
 from langchain_core.messages import BaseMessage
@@ -18,6 +19,7 @@ class IncidentState(TypedDict, total=False):
 
     # Investigator
     messages: Annotated[list[BaseMessage], add_messages]
+    visited_nodes: Annotated[list[str], add]
     evidence_summary: str
     root_cause: str
     confidence: float

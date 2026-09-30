@@ -1,9 +1,9 @@
 from dotenv import load_dotenv
 from langchain_groq import ChatGroq
 
-from schemas import Classification, Investigation
+from .schemas import Classification, Investigation
 
-from tools import (
+from .tools import (
     query_logs,
     get_metrics,
     get_recent_deployments,
@@ -31,3 +31,5 @@ investigator_llm = llm.bind_tools(
 investigation_llm = llm.with_structured_output(
     Investigation, method="json_schema"
 )
+
+report_llm=llm

@@ -1,13 +1,5 @@
-from models import classifier_llm
+from .schemas import Classification
 
-
-result = classifier_llm.invoke(
-    """
-    Classify this monitoring alert.
-
-    Service: db-primary
-    Alert: Database disk usage at 94%
-    """
-)
-
-print(result)
+def test_classification_schema_accepts_required_severities():
+    for severity in ("SEV1", "SEV2", "SEV3", "Noise"):
+        assert Classification(severity=severity).severity == severity
